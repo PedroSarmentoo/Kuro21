@@ -1,0 +1,19 @@
+{
+  "name": "kuro21",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kuro21 - jogo de Blackjack no navegador (Grupo 5)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "@fontsource/shippori-mincho": "^5.1.0",
+    "@fontsource/zen-kaku-gothic-new": "^5.1.0"
+  }
+}

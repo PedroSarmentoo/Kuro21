@@ -1,0 +1,59 @@
+/* Carta: componente visual reutilizável (a lógica fica em src/game) */
+.card {
+  position: relative;
+  flex: none;
+  width: var(--carta-w);
+  height: var(--carta-h);
+  border-radius: calc(var(--carta-w) * 0.09);
+  background: var(--osso);
+  color: #1b1c1f;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 6px 14px rgba(0, 0, 0, 0.45);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  user-select: none;
+}
+
+.card--red {
+  color: var(--shu);
+}
+
+.card__corner {
+  position: absolute;
+  top: 6%;
+  left: 9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  font-size: calc(var(--carta-w) * 0.26);
+}
+
+.card__corner--end {
+  top: auto;
+  left: auto;
+  right: 9%;
+  bottom: 6%;
+  transform: rotate(180deg);
+}
+
+.card__pip {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--carta-w) * 0.5);
+  line-height: 1;
+}
+
+/* Verso: padrão de ondas (seigaiha) simplificado em duas cores. */
+.card--back {
+  background:
+    radial-gradient(circle at 50% 100%, transparent 38%, var(--shu) 39% 45%, transparent 46%) 0 0 / 50% 25%,
+    radial-gradient(circle at 0 100%, transparent 38%, var(--shu) 39% 45%, transparent 46%) 0 0 / 50% 25%,
+    #202327;
+  box-shadow:
+    0 0 0 calc(var(--carta-w) * 0.05) var(--osso) inset,
+    0 6px 14px rgba(0, 0, 0, 0.45);
+}

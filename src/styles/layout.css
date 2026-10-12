@@ -1,0 +1,69 @@
+/* Estrutura da página: cabeçalho, mesa e controles.
+   A página ocupa exatamente a altura da janela e nunca rola na horizontal. */
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--gap);
+  height: 100dvh;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: max(var(--gap), env(safe-area-inset-top)) max(var(--gap), env(safe-area-inset-right))
+    max(var(--gap), env(safe-area-inset-bottom)) max(var(--gap), env(safe-area-inset-left));
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap);
+  padding: 0 0.25rem;
+}
+
+.brand {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: var(--t2);
+  letter-spacing: 0.02em;
+}
+
+.brand__num {
+  margin-left: 0.15em;
+  color: var(--shu);
+}
+
+.balance {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.balance__label {
+  color: var(--osso-suave);
+  font-size: var(--t-1);
+}
+
+.balance__value {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: var(--t2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Celular deitado: mesa à esquerda, controles em coluna à direita. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 34vw, 320px);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: var(--gap);
+  }
+  .topbar {
+    grid-column: 1 / -1;
+  }
+  .brand {
+    font-size: var(--t1);
+  }
+  .balance__value {
+    font-size: var(--t1);
+  }
+}

@@ -1,0 +1,39 @@
+/* Identidade visual do Kuro21: "kuro" é preto em japonês.
+   Mesa de laca escura, cartas cor de osso e um vermelho shu como único acento forte. */
+:root {
+  /* Cores */
+  --laca: #16181b;          /* fundo da página */
+  --laca-2: #1f2226;        /* superfícies do cabeçalho e dos controles */
+  --mesa: #17352e;          /* feltro escuro da mesa */
+  --mesa-claro: #1f4a3f;
+  --mesa-fundo: #10251f;
+  --osso: #f1ebdc;          /* cartas e texto principal */
+  --osso-suave: #c9c2b0;    /* texto secundário */
+  --shu: #c8372d;           /* acento: ação principal e naipes vermelhos */
+  --shu-escuro: #9f2a22;
+  --latao: #b8923a;         /* fios e detalhes das fichas */
+  --indigo: #2e3f6b;
+
+  /* Tipografia */
+  --fonte-titulo: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+  --fonte-ui: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif;
+
+  /* Escala (1.25) */
+  --t-1: 0.8rem;
+  --t0: 1rem;
+  --t1: 1.25rem;
+  --t2: 1.56rem;
+  --t3: 1.95rem;
+
+  /* Espaçamento e forma */
+  --gap: clamp(0.5rem, 1.6vmin, 1rem);
+  --raio: 10px;
+  --raio-mesa: clamp(22px, 4vmin, 56px);
+
+  /* Carta (proporção 5:7). Cresce com a tela, mas limitada pela altura. */
+  --carta-w: clamp(46px, min(20vw, 15dvh), 150px);
+  --carta-h: calc(var(--carta-w) * 1.4);
+
+  /* Alvo de toque mínimo */
+  --toque: 48px;
+}
