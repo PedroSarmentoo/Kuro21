@@ -1,0 +1,216 @@
+/* Fichas, total da aposta e botões */
+.controls {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--gap) calc(var(--gap) * 2);
+  padding: var(--gap) calc(var(--gap) * 1.5);
+  border-radius: calc(var(--raio) * 1.6);
+  background: var(--laca-2);
+  box-shadow: inset 0 0 0 1px rgba(241, 235, 220, 0.08);
+}
+
+.bet {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.bet__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.bet__chips {
+  display: flex;
+  gap: clamp(0.25rem, 1.4vw, 0.5rem);
+}
+
+.bet__total {
+  display: flex;
+  flex-direction: column;
+  min-width: 3.2rem;
+}
+
+.bet__label {
+  color: var(--osso-suave);
+  font-size: var(--t-1);
+}
+
+.bet__value {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: var(--t2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ficha: o valor sempre aparece em número, a cor é só reforço. */
+.chip {
+  --cor: var(--osso);
+  --fio: var(--shu);
+  --tinta: #1b1c1f;
+  position: relative;
+  flex: none;
+  width: clamp(42px, 12.5vw, var(--toque));
+  height: clamp(42px, 12.5vw, var(--toque));
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--fio) 0 14deg, var(--cor) 14deg 45deg);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.chip span {
+  position: absolute;
+  inset: 17%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cor);
+  box-shadow: 0 0 0 1.5px var(--fio);
+  color: var(--tinta);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.chip:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.chip:active:not(:disabled) {
+  transform: translateY(0) scale(0.96);
+}
+
+.chip--5 {
+  --cor: var(--osso);
+  --fio: var(--shu);
+}
+.chip--10 {
+  --cor: var(--shu);
+  --fio: var(--osso);
+  --tinta: var(--osso);
+}
+.chip--25 {
+  --cor: var(--latao);
+  --fio: #1b1c1f;
+}
+.chip--50 {
+  --cor: var(--indigo);
+  --fio: var(--osso);
+  --tinta: var(--osso);
+}
+.chip--100 {
+  --cor: #1a1b1e;
+  --fio: var(--latao);
+  --tinta: var(--latao);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.btn {
+  min-height: var(--toque);
+  padding: 0 1.2rem;
+  border: 1px solid rgba(241, 235, 220, 0.35);
+  border-radius: var(--raio);
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(241, 235, 220, 0.1);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  border-color: var(--shu);
+  background: var(--shu);
+  color: var(--osso);
+}
+
+.btn--clear {
+  padding: 0 0.75rem;
+  font-size: var(--t-1);
+}
+
+.status--error {
+  color: #ffc4b9;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--shu-escuro);
+}
+
+.btn:disabled,
+.chip:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Celular em pé: controles empilhados, botão principal em linha própria. */
+@media (max-width: 720px) and (orientation: portrait), (max-width: 560px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+  .bet {
+    justify-items: stretch;
+  }
+  .bet__chips {
+    justify-content: space-between;
+  }
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .actions .btn--primary {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Celular deitado: controles em coluna na lateral. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .controls {
+    grid-template-columns: 1fr;
+    align-content: center;
+    padding: var(--gap);
+  }
+  .bet {
+    gap: 0.5rem;
+  }
+  .bet__chips {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bet__total {
+    min-width: 0;
+  }
+  .bet__value {
+    font-size: var(--t1);
+  }
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .actions .btn--primary {
+    grid-column: 1 / -1;
+  }
+  .btn {
+    padding: 0 0.6rem;
+  }
+}
