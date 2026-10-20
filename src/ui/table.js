@@ -21,6 +21,7 @@ export function getTableElements() {
     playerScore: byId('player-score'),
     chips: byId('chips'),
     btnDeal: byId('btn-deal'),
+    btnClear: byId('btn-clear-bet'),
     btnHit: byId('btn-hit'),
     btnStand: byId('btn-stand'),
   };

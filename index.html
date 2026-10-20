@@ -57,21 +57,26 @@
       <section class="controls" aria-label="Controles da rodada">
         <div class="bet">
           <div class="bet__chips" id="chips" role="group" aria-label="Fichas">
-            <button class="chip chip--5" type="button" data-value="5" aria-label="Ficha de 5"><span>5</span></button>
-            <button class="chip chip--10" type="button" data-value="10" aria-label="Ficha de 10"><span>10</span></button>
-            <button class="chip chip--25" type="button" data-value="25" aria-label="Ficha de 25"><span>25</span></button>
-            <button class="chip chip--50" type="button" data-value="50" aria-label="Ficha de 50"><span>50</span></button>
-            <button class="chip chip--100" type="button" data-value="100" aria-label="Ficha de 100"><span>100</span></button>
+            <button class="chip chip--5" type="button" data-value="5" aria-label="Ficha de 5" disabled><span>5</span></button>
+            <button class="chip chip--10" type="button" data-value="10" aria-label="Ficha de 10" disabled><span>10</span></button>
+            <button class="chip chip--25" type="button" data-value="25" aria-label="Ficha de 25" disabled><span>25</span></button>
+            <button class="chip chip--50" type="button" data-value="50" aria-label="Ficha de 50" disabled><span>50</span></button>
+            <button class="chip chip--100" type="button" data-value="100" aria-label="Ficha de 100" disabled><span>100</span></button>
           </div>
-          <p class="bet__total">
-            <span class="bet__label">Aposta</span>
-            <span class="bet__value" id="bet-value">0</span>
-          </p>
+          <div class="bet__summary">
+            <p class="bet__total" aria-live="polite" aria-atomic="true">
+              <span class="bet__label">Aposta</span>
+              <span class="bet__value" id="bet-value">0</span>
+            </p>
+            <button class="btn btn--clear" id="btn-clear-bet" type="button" aria-controls="bet-value" disabled>
+              Limpar aposta
+            </button>
+          </div>
         </div>
 
         <div class="actions">
-          <button class="btn btn--primary" id="btn-deal" type="button" disabled>
-            Apostar e dar as cartas
+          <button class="btn btn--primary" id="btn-deal" type="button" aria-describedby="status" disabled>
+            Confirmar aposta
           </button>
           <button class="btn" id="btn-hit" type="button" disabled>Comprar (Hit)</button>
           <button class="btn" id="btn-stand" type="button" disabled>Parar (Stand)</button>

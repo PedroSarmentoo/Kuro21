@@ -11,9 +11,15 @@
 }
 
 .bet {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.bet__summary {
   display: flex;
   align-items: center;
-  gap: calc(var(--gap) * 1.5);
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .bet__chips {
@@ -72,11 +78,11 @@
   line-height: 1;
 }
 
-.chip:hover {
+.chip:hover:not(:disabled) {
   transform: translateY(-2px);
 }
 
-.chip:active {
+.chip:active:not(:disabled) {
   transform: translateY(0) scale(0.96);
 }
 
@@ -106,6 +112,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.6rem;
 }
@@ -137,6 +144,15 @@
   color: var(--osso);
 }
 
+.btn--clear {
+  padding: 0 0.75rem;
+  font-size: var(--t-1);
+}
+
+.status--error {
+  color: #ffc4b9;
+}
+
 .btn--primary:hover:not(:disabled) {
   background: var(--shu-escuro);
 }
@@ -153,6 +169,9 @@
     grid-template-columns: 1fr;
   }
   .bet {
+    justify-items: stretch;
+  }
+  .bet__chips {
     justify-content: space-between;
   }
   .actions {
@@ -172,8 +191,6 @@
     padding: var(--gap);
   }
   .bet {
-    flex-direction: column;
-    align-items: stretch;
     gap: 0.5rem;
   }
   .bet__chips {
@@ -181,9 +198,7 @@
     justify-content: center;
   }
   .bet__total {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    min-width: 0;
   }
   .bet__value {
     font-size: var(--t1);

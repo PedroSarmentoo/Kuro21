@@ -128,3 +128,33 @@
     font-size: var(--t0);
   }
 }
+
+/* Em celulares baixos, a seleção de aposta precisa dividir a altura com a mesa.
+   As cartas passam a respeitar o espaço real de cada mão, sem serem cortadas. */
+@media (orientation: portrait) and (max-height: 700px) {
+  .table {
+    grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+    row-gap: 0.4rem;
+  }
+  .hand {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+  .hand__cards {
+    --carta-limite: var(--carta-w);
+    container-type: size;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+  }
+  .hand__cards > .card,
+  .hand__cards > .slot {
+    --carta-w: min(var(--carta-limite), calc(100cqh / 1.4));
+    --carta-h: calc(var(--carta-w) * 1.4);
+  }
+  .status,
+  .hand__title {
+    font-size: var(--t0);
+  }
+}
