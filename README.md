@@ -46,6 +46,9 @@ Regra de dependência: `game` não importa `ui` nem `storage`. Isso mantém as r
 Entregue na T04: estrutura do projeto, tela da mesa responsiva (computador e celular em pé ou deitado),
 fichas e botões, ainda **sem lógica de jogo**. Os botões aparecem desabilitados de propósito.
 
+Entregue na T06: pontuação da mão em `src/game/score.js` (`calculateScore`), com o Ás valendo 1 ou 11.
+A mesa de demonstração (`#demo`) já usa essa regra.
+
 ## Trabalho em grupo
 
 Veja [docs/convencao-git.md](docs/convencao-git.md) antes de criar a primeira branch.
