@@ -18,8 +18,10 @@ export function cardValue(rank) {
 /**
  * Pontuação da mão. Um Ás passa a valer 11 quando isso não estoura 21.
  * `soft` indica que há um Ás contando 11 (usado depois pela regra do dealer).
+ * `bust` indica estouro (acima de 21).
+ * `blackjack` indica Blackjack natural: Ás e carta de valor 10 nas duas primeiras cartas.
  * @param {{rank: string}[]} cards
- * @returns {{total: number, soft: boolean}}
+ * @returns {{total: number, soft: boolean, bust: boolean, blackjack: boolean}}
  */
 export function calculateScore(cards) {
   let total = 0;
@@ -29,8 +31,14 @@ export function calculateScore(cards) {
     if (rank === 'A') temAs = true;
   }
   // Só um Ás pode valer 11: dois valendo 11 já somam 22.
-  if (temAs && total + 10 <= 21) {
-    return { total: total + 10, soft: true };
-  }
-  return { total, soft: false };
+  const soft = temAs && total + 10 <= 21;
+  if (soft) total += 10;
+
+  return {
+    total,
+    soft,
+    bust: total > 21,
+    // Com duas cartas, só Ás + carta de valor 10 chega a 21.
+    blackjack: cards.length === 2 && total === 21,
+  };
 }
