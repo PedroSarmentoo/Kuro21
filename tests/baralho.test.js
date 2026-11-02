@@ -51,12 +51,12 @@ describe('embaralhar (FIsher-Yates', () => {
     it('distribui as 6 ordens de 3 itens com a mesma frequência',() => {
         const rodadas = 60000;
         const contagem = new Map();
-        for (let n = 0; n <= rodadas; n++){
+        for (let n = 0; n < rodadas; n++){
             const ordem = embaralhar([0, 1, 2]).join('');
             contagem.set(ordem, (contagem.get(ordem) ?? 0) + 1);
         }
         assert.equal(contagem.size, 6);
-        for(const vezes of contagem.values){
+        for (const vezes of contagem.values()) {
             assert.ok(Math.abs(vezes - rodadas/6) < 600, `frequência desigual: ${vezes}`);
         }
     });

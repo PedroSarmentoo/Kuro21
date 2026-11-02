@@ -38,7 +38,7 @@ export function criarCartas(){
 export function embaralhar(itens, aleatorio = Math.random){
     for (let i = itens.length - 1; i > 0; i--){
         const j = Math.floor(aleatorio() * (i + 1));
-        [itens[i], itens[j] = itens[j], itens[i]];
+        [itens[i], itens[j]] = [itens[j], itens[i]];
     }
     return itens;
 }
