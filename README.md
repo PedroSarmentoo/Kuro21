@@ -46,7 +46,29 @@ Regra de dependência: `game` não importa `ui` nem `storage`. Isso mantém as r
 Entregue na T04: estrutura do projeto, tela da mesa responsiva (computador e celular em pé ou deitado),
 fichas e botões, ainda **sem lógica de jogo**. Os botões aparecem desabilitados de propósito.
 
+Entregue na T06: pontuação da mão em `src/game/score.js` (`calculateScore`), com o Ás valendo 1 ou 11.
+A mesa de demonstração (`#demo`) já usa essa regra.
+
 ## Trabalho em grupo
 
 Veja [docs/convencao-git.md](docs/convencao-git.md) antes de criar a primeira branch.
 Os tickets estão no Jira, projeto KURO.
+
+## Testes automatizados
+
+Para executar todos os testes, na pasta raiz do projeto:
+
+```bash
+npm test
+```
+
+No PowerShell do Windows, se houver bloqueio do arquivo `npm.ps1`, use `npm.cmd test`.
+
+Os testes utilizam o executor nativo do Node.js e verificam:
+- Criação de 52 cartas únicas, embaralhamento e distribuição.
+- Figuras valendo 10.
+- Ás valendo 1 ou 11 e mãos com múltiplos Ases.
+- Estouro acima de 21.
+- Blackjack natural e sua diferença em relação a 21 com três ou mais cartas.
+
+O resultado esperado é que todos os testes passem, sem falhas.
